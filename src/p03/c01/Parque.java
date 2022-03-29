@@ -35,7 +35,7 @@ public class Parque implements IParque {
 
 		checkInvariante();
 
-		// TODO
+		notify();
 
 	}
 
@@ -60,6 +60,7 @@ public class Parque implements IParque {
 
 		checkInvariante();
 
+		notify();
 	}
 
 	private void imprimirInfo(String puerta, String movimiento) {
@@ -92,8 +93,8 @@ public class Parque implements IParque {
 
 	}
 
-	protected void comprobarAntesDeEntrar()  { 
-		while(MAX_AFORO == contadorPersonasTotales) {
+	protected void comprobarAntesDeEntrar() {
+		while (MAX_AFORO == contadorPersonasTotales) {
 			try {
 				wait();
 			} catch (InterruptedException e) {
@@ -103,8 +104,8 @@ public class Parque implements IParque {
 		}
 	}
 
-	protected void comprobarAntesDeSalir() { 
-		while(MAX_AFORO == contadorPersonasTotales) {
+	protected void comprobarAntesDeSalir() {
+		while (MAX_AFORO == contadorPersonasTotales) {
 			try {
 				wait();
 			} catch (InterruptedException e) {
