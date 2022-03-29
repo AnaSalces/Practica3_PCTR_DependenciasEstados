@@ -58,6 +58,8 @@ public class Parque implements IParque {
 		// Imprimimos el estado del parque
 		imprimirInfo(puerta, "Salida");
 
+		checkInvariante();
+
 	}
 
 	private void imprimirInfo(String puerta, String movimiento) {
@@ -84,8 +86,9 @@ public class Parque implements IParque {
 	protected void checkInvariante() {
 		assert sumarContadoresPuerta() == contadorPersonasTotales
 				: "INV: La suma de contadores de las puertas debe ser igual al valor del contador del parte";
-		// TODO
-		// TODO
+		assert MIN_AFORO < contadorPersonasTotales
+				: "INV: El aforo del parque no puede ser menor que 0 (el mínimo de aforo)";
+		assert MAX_AFORO > contadorPersonasTotales : "INV: El aforo del parque no puede ser mayor que el máximo";
 
 	}
 
