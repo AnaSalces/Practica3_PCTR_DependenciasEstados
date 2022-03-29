@@ -4,9 +4,10 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 
 public class Parque implements IParque{
-
-
-	// TODO 
+	
+	
+	private int MAX_AFORO = 50;
+	private int MIN_AFORO = 0;
 	private int contadorPersonasTotales;
 	private Hashtable<String, Integer> contadoresPersonasPuerta;
 	
@@ -36,16 +37,23 @@ public class Parque implements IParque{
 		// Imprimimos el estado del parque
 		imprimirInfo(puerta, "Entrada");
 		
-		// TODO
+		checkInvariante();
 		
 		
 		// TODO
 		
 	}
 	
-	// 
-	// TODO Método salirDelParque
-	//
+
+	@Override
+	public void salirAlParque(String puerta) {
+		// TODO Auto-generated method stub
+		
+		// Imprimimos el estado del parque
+		imprimirInfo(puerta, "Salida");
+		
+	}
+
 	
 	
 	private void imprimirInfo (String puerta, String movimiento){
@@ -78,16 +86,25 @@ public class Parque implements IParque{
 	}
 
 	protected void comprobarAntesDeEntrar(){	// TODO
-		//
-		// TODO
-		//
+		if(contadorPersonasTotales == MAX_AFORO) {
+			try {
+				wait();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
 	}
 
-	protected void comprobarAntesDeSalir(){		// TODO
-		//
-		// TODO
-		//
+	protected void comprobarAntesDeSalir() throws InterruptedException{		// TODO
+		if(contadorPersonasTotales <= MIN_AFORO) {
+			wait();
+			
+		}
 	}
+
+
 
 
 }
